@@ -128,15 +128,12 @@ export function Navbar({
             <AnimatedPacmanLogo />
 
             <div className="flex flex-col ml-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center">
                 <span
                   className="text-base sm:text-lg font-black tracking-widest text-yellow-300 drop-shadow-[0_0_10px_rgba(253,224,71,0.7)] group-hover:text-yellow-200 transition-colors"
                   style={{ fontFamily: '"Press Start 2P", monospace' }}
                 >
                   PAC-MAN
-                </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-blue-950/90 border border-blue-600/70 text-[9px] font-bold text-cyan-300 font-mono tracking-wider group-hover:border-cyan-400 transition-colors shadow-[0_0_8px_rgba(6,182,212,0.3)]">
-                  ARCADE
                 </span>
               </div>
             </div>
