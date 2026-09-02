@@ -208,7 +208,6 @@ export default function App() {
         onNewGame={handleRestart}
         onGoHome={handleGoHome}
         onOpenDeveloper={() => setShowDeveloperPage(true)}
-        onOpenLobby={() => setShowLobbyModal(true)}
       />
 
       {/* Main Game Container */}
