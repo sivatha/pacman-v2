@@ -4,9 +4,9 @@ export const COLS = 28               // maze width  in tiles
 export const ROWS = 31               // maze height in tiles
 export const CANVAS_W = COLS * TILE_SIZE   // 448 (internal render resolution)
 export const CANVAS_H = ROWS * TILE_SIZE   // 496 (internal render resolution)
-export const GAME_SCALE = 1.10             // 10% game size increase
-export const DISPLAY_W = Math.round(CANVAS_W * GAME_SCALE) // 493px
-export const DISPLAY_H = Math.round(CANVAS_H * GAME_SCALE) // 546px
+export const GAME_SCALE = 1.20             // 20% game size increase
+export const DISPLAY_W = Math.round(CANVAS_W * GAME_SCALE) // 538px
+export const DISPLAY_H = Math.round(CANVAS_H * GAME_SCALE) // 595px
 
 // ─── Tile types ───────────────────────────────────────────────────────────────
 export const T_EMPTY  = 0
