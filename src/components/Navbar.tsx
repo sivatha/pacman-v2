@@ -9,12 +9,12 @@ interface Props {
   score: number
   highScore: number
   speedMultiplier: number
-  soundMuted: boolean
-  isPaused: boolean
+  soundMuted?: boolean
+  isPaused?: boolean
   onSelectLevel: (lvl: number) => void
   onSelectSpeed: (spd: number) => void
-  onToggleSound: () => void
-  onTogglePause: () => void
+  onToggleSound?: () => void
+  onTogglePause?: () => void
   onNewGame?: () => void
   onGoHome: () => void
   onOpenDeveloper: () => void
@@ -73,12 +73,8 @@ export function Navbar({
   score,
   highScore,
   speedMultiplier,
-  soundMuted,
-  isPaused,
   onSelectLevel,
   onSelectSpeed,
-  onToggleSound,
-  onTogglePause,
   onGoHome,
   onOpenDeveloper,
 }: Props) {
@@ -238,26 +234,6 @@ export function Navbar({
             >
               <Icon name="person" size={16} />
               <span className="hidden sm:inline">Dev</span>
-            </button>
-
-            {/* Sound Mute/Unmute */}
-            <button
-              onClick={onToggleSound}
-              className="p-1 sm:px-2 py-1 rounded bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs text-white cursor-pointer transition-colors shadow flex items-center justify-center"
-              title={soundMuted ? 'Unmute audio' : 'Mute audio'}
-              aria-label="Toggle sound"
-            >
-              <Icon name={soundMuted ? 'volume_off' : 'volume_up'} size={18} />
-            </button>
-
-            {/* Pause / Resume */}
-            <button
-              onClick={onTogglePause}
-              className="px-2 py-1 rounded bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono font-bold text-yellow-300 cursor-pointer transition-colors shadow flex items-center justify-center"
-              title={isPaused ? 'Resume game' : 'Pause game'}
-              aria-label="Toggle pause"
-            >
-              <Icon name={isPaused ? 'play_arrow' : 'pause'} size={18} fill />
             </button>
 
             {/* Fullscreen */}
