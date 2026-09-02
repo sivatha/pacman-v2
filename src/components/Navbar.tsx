@@ -219,16 +219,6 @@ export function Navbar({
               </div>
             </div>
 
-            {/* How to Play Modal Trigger */}
-            <button
-              onClick={handleOpenHowToPlay}
-              className="px-2 sm:px-2.5 py-1 rounded bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono text-neutral-300 hover:text-white flex items-center gap-1 cursor-pointer transition-colors shadow"
-              title="How to Play"
-            >
-              <Icon name="help" size={16} />
-              <span className="hidden lg:inline">Rules</span>
-            </button>
-
             {/* 2-Player Online Button */}
             {onOpenLobby && (
               <button
@@ -244,6 +234,16 @@ export function Navbar({
               </button>
             )}
 
+            {/* How to Play / Rules Modal Trigger (grouped next to Dev) */}
+            <button
+              onClick={handleOpenHowToPlay}
+              className="px-2 sm:px-2.5 py-1 rounded bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-xs font-mono text-neutral-300 hover:text-white flex items-center gap-1 cursor-pointer transition-colors shadow"
+              title="How to Play / Game Rules"
+            >
+              <Icon name="help" size={16} />
+              <span className="hidden sm:inline">Rules</span>
+            </button>
+
             {/* About Developer Page Trigger */}
             <button
               onClick={() => {
@@ -254,7 +254,7 @@ export function Navbar({
               title="About Developer"
             >
               <Icon name="person" size={16} />
-              <span className="hidden md:inline">Dev</span>
+              <span className="hidden sm:inline">Dev</span>
             </button>
 
             {/* Sound Mute/Unmute */}
