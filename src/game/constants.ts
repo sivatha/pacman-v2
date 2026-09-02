@@ -58,8 +58,16 @@ export const GHOST_COLORS = ['#FF0000', '#FFB8FF', '#00FFFF', '#FFB852']
 export const GHOST_HOME_COLS = [14, 12, 14, 16]  // spawn col per ghost
 export const GHOST_HOME_ROWS = [11, 14, 14, 14]  // spawn row per ghost (blinky starts above door)
 
-// ─── Pac-Man start position ───────────────────────────────────────────────────
+// ─── Game Modes ───────────────────────────────────────────────────────────────
+export type GameMode = 'solo' | 'local' | 'online'
+
+// ─── Pac-Man start positions ───────────────────────────────────────────────────
 export const PACMAN_START = { col: 14, row: 23 }
+export const PACMAN1_START = { col: 13, row: 23 }
+export const PACMAN2_START = { col: 15, row: 23 }
+
+export const PACMAN1_COLOR = '#FFE000'
+export const PACMAN2_COLOR = '#FF69B4'
 
 export const GAME_SPEED_OPTIONS = [
   { label: '1.0x Normal', value: 1.0 },

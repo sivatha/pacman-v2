@@ -1,7 +1,8 @@
 import {
   TILE_SIZE, COLS, ROWS,
   DIR_NONE, DIR_RIGHT, DIR_DOWN, DIR_LEFT, DIR_UP, DIR_VECTORS,
-  PACMAN_START, MOUTH_FRAMES, DEATH_FRAMES,
+  PACMAN_START, PACMAN1_COLOR, PACMAN2_COLOR,
+  MOUTH_FRAMES, DEATH_FRAMES,
 } from './constants'
 import { isPassable, isTunnel, tileCenter, pixelToTile, type Maze } from './maze'
 
@@ -20,10 +21,17 @@ export interface PacmanState {
   // Speed as fraction of baseline tile per frame
   speed: number
   isMoving: boolean
+  playerId?: number
+  color?: string
 }
 
-export function createPacman(speed: number): PacmanState {
-  const { x, y } = tileCenter(PACMAN_START.col, PACMAN_START.row)
+export function createPacman(
+  speed: number,
+  startCol = PACMAN_START.col,
+  startRow = PACMAN_START.row,
+  playerId = 1,
+): PacmanState {
+  const { x, y } = tileCenter(startCol, startRow)
   return {
     x, y,
     dir: DIR_LEFT,
@@ -33,6 +41,8 @@ export function createPacman(speed: number): PacmanState {
     deathFrame: -1,
     speed,
     isMoving: false,
+    playerId,
+    color: playerId === 1 ? PACMAN1_COLOR : PACMAN2_COLOR,
   }
 }
 

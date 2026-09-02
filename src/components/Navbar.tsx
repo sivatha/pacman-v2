@@ -18,6 +18,7 @@ interface Props {
   onNewGame: () => void
   onGoHome: () => void
   onOpenDeveloper: () => void
+  onOpenLobby?: () => void
 }
 
 function AnimatedPacmanLogo() {
@@ -82,6 +83,7 @@ export function Navbar({
   onNewGame,
   onGoHome,
   onOpenDeveloper,
+  onOpenLobby,
 }: Props) {
   const [showHowToPlay, setShowHowToPlay] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -230,6 +232,21 @@ export function Navbar({
               <Icon name="help" size={16} />
               <span className="hidden lg:inline">Rules</span>
             </button>
+
+            {/* 2-Player Online Button */}
+            {onOpenLobby && (
+              <button
+                onClick={() => {
+                  initAudio()
+                  onOpenLobby()
+                }}
+                className="px-2 sm:px-2.5 py-1 rounded bg-gradient-to-r from-blue-950 to-cyan-950 hover:from-blue-900 hover:to-cyan-900 border border-cyan-500/50 text-xs font-mono text-cyan-300 hover:text-cyan-200 flex items-center gap-1 cursor-pointer transition-all shadow active:scale-95"
+                title="Online 2-Player (PeerJS)"
+              >
+                <Icon name="wifi" size={15} className="animate-pulse" />
+                <span className="hidden sm:inline font-bold">2P ROOM</span>
+              </button>
+            )}
 
             {/* About Developer Page Trigger */}
             <button

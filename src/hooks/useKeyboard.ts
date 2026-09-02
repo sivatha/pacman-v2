@@ -1,15 +1,18 @@
 import { useEffect, useCallback } from 'react'
-import { DIR_RIGHT, DIR_DOWN, DIR_LEFT, DIR_UP } from '../game/constants'
+import { DIR_RIGHT, DIR_DOWN, DIR_LEFT, DIR_UP, type GameMode } from '../game/constants'
 import { initAudio } from '../game/sounds'
 
 type KeyHandler = (dir: number) => void
 type ActionHandler = () => void
 
-const KEY_MAP: Record<string, number> = {
+const P1_ARROWS: Record<string, number> = {
   ArrowRight: DIR_RIGHT,
   ArrowDown:  DIR_DOWN,
   ArrowLeft:  DIR_LEFT,
   ArrowUp:    DIR_UP,
+}
+
+const P2_WASD: Record<string, number> = {
   KeyD: DIR_RIGHT,
   KeyS: DIR_DOWN,
   KeyA: DIR_LEFT,
@@ -22,9 +25,11 @@ const KEY_MAP: Record<string, number> = {
 
 export function useKeyboard(
   onDirection: KeyHandler,
+  onDirectionP2: KeyHandler | undefined,
   onPauseToggle: ActionHandler,
   onStart: ActionHandler,
   phase: string,
+  gameMode: GameMode = 'solo',
 ): void {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -56,14 +61,32 @@ export function useKeyboard(
 
       // Direction keys during ready or playing
       if (phase === 'playing' || phase === 'ready') {
-        const dir = KEY_MAP[e.code] ?? KEY_MAP[e.key]
-        if (dir !== undefined) {
-          e.preventDefault()
-          onDirection(dir)
+        if (gameMode === 'local') {
+          // Dedicated controls: Arrows for P1, WASD for P2
+          const p1Dir = P1_ARROWS[e.code] ?? P1_ARROWS[e.key]
+          if (p1Dir !== undefined) {
+            e.preventDefault()
+            onDirection(p1Dir)
+            return
+          }
+
+          const p2Dir = P2_WASD[e.code] ?? P2_WASD[e.key]
+          if (p2Dir !== undefined && onDirectionP2) {
+            e.preventDefault()
+            onDirectionP2(p2Dir)
+            return
+          }
+        } else {
+          // Solo or Online: Arrows and WASD both control the local player
+          const dir = (P1_ARROWS[e.code] ?? P1_ARROWS[e.key]) ?? (P2_WASD[e.code] ?? P2_WASD[e.key])
+          if (dir !== undefined) {
+            e.preventDefault()
+            onDirection(dir)
+          }
         }
       }
     },
-    [onDirection, onPauseToggle, onStart, phase],
+    [onDirection, onDirectionP2, onPauseToggle, onStart, phase, gameMode],
   )
 
   useEffect(() => {

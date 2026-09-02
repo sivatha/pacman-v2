@@ -71,8 +71,15 @@ export function GameCanvas({ state, dispatch }: Props) {
       drawGhosts(ctx, state.ghosts)
     }
 
-    // 5. Draw Pac-Man
-    drawPacman(ctx, state.pacman)
+    // 5. Draw Pac-Man (Player 1)
+    if (state.lives > 0 || state.pacman.deathFrame >= 0) {
+      drawPacman(ctx, state.pacman)
+    }
+
+    // Draw Pac-Man (Player 2 - Ms. Pac-Man)
+    if (state.pacman2 && (state.lives2 > 0 || state.pacman2.deathFrame >= 0)) {
+      drawPacman(ctx, state.pacman2)
+    }
 
     // 6. Floating score popups (+200, +400, etc.)
     for (const popup of state.popups) {

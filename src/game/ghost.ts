@@ -41,6 +41,15 @@ export function createGhost(id: number): GhostState {
   }
 }
 
+export function createInitialGhosts(): GhostState[] {
+  return [
+    createGhost(BLINKY),
+    createGhost(PINKY),
+    createGhost(INKY),
+    createGhost(CLYDE),
+  ]
+}
+
 // ─── Euclidean distance² between tiles ───────────────────────────────────────
 function dist2(c1: number, r1: number, c2: number, r2: number): number {
   return (c1 - c2) ** 2 + (r1 - r2) ** 2
