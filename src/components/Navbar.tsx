@@ -15,7 +15,7 @@ interface Props {
   onSelectSpeed: (spd: number) => void
   onToggleSound: () => void
   onTogglePause: () => void
-  onNewGame: () => void
+  onNewGame?: () => void
   onGoHome: () => void
   onOpenDeveloper: () => void
   onOpenLobby?: () => void
@@ -80,7 +80,6 @@ export function Navbar({
   onSelectSpeed,
   onToggleSound,
   onTogglePause,
-  onNewGame,
   onGoHome,
   onOpenDeveloper,
   onOpenLobby,
@@ -289,19 +288,6 @@ export function Navbar({
               aria-label="Toggle fullscreen"
             >
               <Icon name={isFullscreen ? 'fullscreen_exit' : 'fullscreen'} size={18} />
-            </button>
-
-            {/* Restart / New Game */}
-            <button
-              onClick={() => {
-                initAudio()
-                onNewGame()
-              }}
-              className="px-2.5 sm:px-3 py-1 rounded bg-yellow-400 hover:bg-yellow-300 active:scale-95 text-black font-mono font-bold text-xs cursor-pointer transition-all shadow flex items-center gap-1"
-              title="Restart New Game"
-            >
-              <Icon name="restart_alt" size={16} />
-              <span>RESET</span>
             </button>
           </div>
         </div>
