@@ -213,9 +213,9 @@ export default function App() {
 
       {/* Main Game Container */}
       <main className="flex-1 flex flex-col items-center justify-center p-3">
-        {/* Arcade Shell Container (10% increased size) */}
+        {/* Arcade Shell Container (50% increased size) */}
         <div
-          className="flex flex-col items-center rounded-xl overflow-hidden border-4 border-blue-600 shadow-[0_0_40px_rgba(37,99,235,0.4)] bg-black relative"
+          className="flex flex-col items-center rounded-xl overflow-hidden border-4 border-blue-600 shadow-[0_0_40px_rgba(37,99,235,0.4)] bg-black relative max-w-full"
           style={{ width: DISPLAY_W + 8 }}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
