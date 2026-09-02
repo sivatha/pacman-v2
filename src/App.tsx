@@ -264,6 +264,7 @@ export default function App() {
               highScore={state.highScore}
               level={state.level}
               onRestart={handleRestart}
+              onGoHome={handleGoHome}
             />
           )}
         </div>

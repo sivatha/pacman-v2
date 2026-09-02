@@ -5,9 +5,10 @@ interface Props {
   highScore: number
   level: number
   onRestart: () => void
+  onGoHome: () => void
 }
 
-export function GameOverScreen({ score, highScore, level, onRestart }: Props) {
+export function GameOverScreen({ score, highScore, level, onRestart, onGoHome }: Props) {
   const isNewHigh = score >= highScore && score > 0
 
   return (
@@ -29,7 +30,7 @@ export function GameOverScreen({ score, highScore, level, onRestart }: Props) {
         </div>
       )}
 
-      <div className="mb-6 bg-neutral-950/80 border border-neutral-800 rounded-lg p-3 w-56 text-center space-y-1.5 shadow-inner">
+      <div className="mb-5 bg-neutral-950/80 border border-neutral-800 rounded-lg p-3 w-56 text-center space-y-1.5 shadow-inner">
         <div className="text-neutral-400 text-xs">
           SCORE: <span className="text-yellow-300 font-bold text-sm">{score.toLocaleString()}</span>
         </div>
@@ -42,13 +43,24 @@ export function GameOverScreen({ score, highScore, level, onRestart }: Props) {
         </div>
       </div>
 
-      <button
-        onClick={onRestart}
-        className="py-3 px-6 rounded bg-red-600 hover:bg-red-500 active:scale-95 text-white font-bold text-sm tracking-wider flex items-center gap-2 cursor-pointer transition-all shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-      >
-        <Icon name="replay" size={18} />
-        <span>PLAY AGAIN</span>
-      </button>
+      {/* Buttons */}
+      <div className="flex flex-col gap-2.5 w-56">
+        <button
+          onClick={onRestart}
+          className="py-3 px-6 rounded-xl bg-red-600 hover:bg-red-500 active:scale-95 text-white font-bold text-sm tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all shadow-[0_0_15px_rgba(220,38,38,0.5)]"
+        >
+          <Icon name="replay" size={18} />
+          <span>PLAY AGAIN</span>
+        </button>
+
+        <button
+          onClick={onGoHome}
+          className="py-2.5 px-6 rounded-xl bg-neutral-900 hover:bg-neutral-800 active:scale-95 text-neutral-300 hover:text-yellow-300 font-bold text-xs tracking-wider flex items-center justify-center gap-2 border border-neutral-700 hover:border-yellow-400/50 cursor-pointer transition-all shadow"
+        >
+          <Icon name="home" size={16} />
+          <span>RETURN TO HOME</span>
+        </button>
+      </div>
     </div>
   )
 }
